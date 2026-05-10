@@ -5,6 +5,9 @@
 Personal portfolio for Roman (DoczzzMega) — Matrix-inspired 3D aesthetic in a sea-wave teal palette.
 Rewrite of v1 (https://portfolio-v1-topaz-nu.vercel.app/) with motion-rich UX.
 
+- **Live**: https://potfolio-v2-phi.vercel.app
+- **Repo**: https://github.com/DoczzzMega/portfolio-v2
+
 ## Stack
 
 - **Next.js 16** (App Router, Turbopack) + React 19
@@ -43,6 +46,23 @@ src/
 
 **All copy, projects, skills, contacts, nav items live in `src/data/portfolio.ts`** — never hard-code in components. Exports: `profile`, `skillGroups`, `projects`, `navItems`.
 
+### Project schema
+
+```ts
+type Project = {
+  id: string;
+  title: string;
+  category: "Client" | "AI" | "Frontend" | "Tool";
+  description: string;
+  stack: string[];
+  accent: "teal" | "magenta" | "yellow" | "green";
+  live?: string;     // optional live URL → renders "live ↗" button
+  source?: string;   // optional GitHub URL → renders "source ↗" button
+};
+```
+
+Cards layout uses index-driven `featured` slots — currently indexes `0` and `3` get `grid-column: span 4` (large bento tiles). Reorder the `projects` array to change which entries are featured. Current real projects (in order): `cookforia` · `bumwerk` · `suno-cleaner` · `ai-secretary` (featured) · `react-pizza` · `claude-progressline`. The first featured slot is `cookforia` (index 0).
+
 ## Design system
 
 ### Palette (`src/styles/_variables.scss`)
@@ -80,10 +100,11 @@ Every type/padding uses `clamp(min, vw, max)` with min lowered for tiny phones a
 ## Conventions
 
 - **Custom cursor**: `body { cursor: none }` — every interactive element must include `data-cursor="hover"` so the cursor ring expands. Cursor auto-hides on `(pointer: coarse)` or ≤900px.
-- **Mobile menu**: Navbar shows hamburger below `$bp-tablet-lg` (900). Overlay uses `AnimatePresence` and locks body scroll while open.
+- **Progressive nav reveal**: navbar uses `width: max-content` capped to viewport, then progressively reveals detail as the screen grows. Burger overlay <900 → compact links 900-1099 → CTA appears at 1100 → wider gaps at 1200 → glyph numbers (`00`, `01`...) reappear at 1440 → most generous at 1920+. Brand suffix `::v2` hides under 768px. When adding/removing nav items, re-check the 900-1100 range — that's the tightest tier without burger.
 - **Scroll reveal**: wrap content in `<Reveal delay={...}>` (`src/components/Reveal/`). It uses framer-motion `whileInView` + `once: true`.
 - **3D card tilt**: see `Skills.tsx` — mousemove computes rotateX/Y from cursor offset, reset on mouseleave.
-- **SCSS naming**: kebab-case classes via `.module.scss`, accessed as `styles.camelCase` from TS. State variants use single-word modifiers (`.active`, `.scrolled`, `.open`, `.feature`).
+- **External link buttons**: `Projects.tsx` renders `live ↗` / `source ↗` buttons under the description, separated by a dashed top border. Hover color matches the card's accent (`tealCard`/`magentaCard`/`yellowCard`/`greenCard`). Always pass `target="_blank" rel="noopener noreferrer" data-cursor="hover"` for outbound links.
+- **SCSS naming**: kebab-case classes via `.module.scss`, accessed as `styles.camelCase` from TS. State variants use single-word modifiers (`.active`, `.scrolled`, `.open`, `.feature`). Prefer explicit class names over `:not()`/positional selectors — CSS-modules hashing makes structural selectors brittle.
 - **No comments unless non-obvious.** Prefer expressive names.
 
 ## Visual signature components
@@ -93,6 +114,7 @@ Every type/padding uses `clamp(min, vw, max)` with min lowered for tiny phones a
 - `Cursor` — lerp-followed ring + dot. Hover state via `data-cursor="hover"` attr lookup.
 - `Scanlines` — fixed CRT scanline overlay + SVG fractal noise + radial vignette.
 - `Hero` — glitch text effect on name (RGB-split via `::before` magenta, `::after` yellow with clip-path).
+- `Projects` — bento grid (6-column on desktop, indexes 0 and 3 span 4 cols). Each card has accent-colored radial background, dashed-border `live ↗` / `source ↗` link row above stack chips, hover lift with accent-colored glow.
 - `Contact.shell` — animated conic-gradient border via `@property --angle` rotation.
 
 ## Section order in `app/page.tsx`
@@ -101,9 +123,26 @@ Every type/padding uses `clamp(min, vw, max)` with min lowered for tiny phones a
 
 ## Source content reference
 
-Pulled from v1 site (https://portfolio-v1-topaz-nu.vercel.app/):
-- Skills: Frontend (React/Next, Vue 3, GSAP, SCSS), Backend (Laravel 10/11, Livewire/MoonShine, MySQL/Postgres, Auth), AI & Tools (vLLM/Whisper/XTTS v2/Vosk, Docker, Git, Web Security)
+Skills + bio + contacts pulled from v1 (https://portfolio-v1-topaz-nu.vercel.app/):
+- Frontend: React/Next, Vue 3, GSAP, SCSS
+- Backend: Laravel 10/11, Livewire/MoonShine, MySQL/Postgres, Sanctum/JWT
+- AI & Tools: vLLM/Whisper/XTTS v2/Vosk, Docker, Git, Web Security
 - Contacts: doczzzmega@gmail.com · t.me/rommega · github.com/DoczzzMega
+
+Projects sourced from real work:
+- **Cookforia** (https://cookforia.ru/) — culinary studio in Saint Petersburg (Laravel client work)
+- **Bumwerk** (https://bumwerk.ru/) — BMW & MINI service center (Laravel client work)
+- **AI Secretary System** (https://shaerware.digital/) — XTTS v2 + Whisper + vLLM voice agent
+- **Suno Cleaner** (https://github.com/DoczzzMega/suno-cleaner) — local AI watermark remover
+- **React Pizza v2** (https://react-pizza-v2-livid.vercel.app) — Redux Toolkit storefront demo
+- **Claude Progressline** (https://github.com/DoczzzMega/claude-progressline) — Claude Code statusline tool
+
+## Deployment
+
+- **Production**: https://potfolio-v2-phi.vercel.app (Vercel project `potfolio-v2`, scope `doczzzmegas-projects`)
+- **Manual deploy**: `vercel --prod` from project root (project already linked via `.vercel/`)
+- **Auto-deploy**: NOT yet active. The Vercel GitHub App needs to be installed for the `DoczzzMega/portfolio-v2` repo (https://github.com/apps/vercel/installations/new) — once installed, run `vercel git connect` to link, after which every push to `main` triggers prod deploy and other branches/PRs get preview URLs.
+- **Vercel CLI version**: must be ≥53.x. Older 52.0.0 had an SSL cert validation bug ("unable to get local issuer certificate") — `npm i -g vercel@latest` resolves it.
 
 ## Adding a new section
 

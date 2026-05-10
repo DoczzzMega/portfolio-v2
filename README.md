@@ -2,6 +2,8 @@
 
 Personal portfolio for **Roman (DoczzzMega)** — a fullstack developer working across PHP/Laravel and the modern JS ecosystem.
 
+**[Live demo →](https://potfolio-v2-phi.vercel.app)**
+
 A rewrite of [v1](https://portfolio-v1-topaz-nu.vercel.app/) with a Matrix-inspired 3D aesthetic in a sea-wave teal palette: digital rain canvas, Tron-style perspective grid, glitch typography, glass cards with neon glow, and a custom cursor.
 
 ## Stack
@@ -18,9 +20,21 @@ A rewrite of [v1](https://portfolio-v1-topaz-nu.vercel.app/) with a Matrix-inspi
 - **PerspectiveGrid** — pure-CSS Tron 3D floor with glowing horizon and radial sun
 - **Custom cursor** — lerp-followed ring + dot, expands on `[data-cursor="hover"]`
 - **Hero glitch** — RGB-split via `::before` magenta + `::after` yellow with clip-path
+- **Bento Projects grid** — 6 real projects with `live ↗` / `source ↗` buttons; cards lift and glow in their accent color on hover
 - **Conic-gradient border** on Contact card animated via `@property --angle`
 - **Scanline + noise + vignette** CRT overlay on top
-- **Fully responsive 320px → 8K** with a complete breakpoint ladder, root-font-size scaling on ≥2560px, and a hamburger menu under 900px
+- **Fully responsive 320px → 8K** with a complete breakpoint ladder, root-font-size scaling on ≥2560px, a progressive desktop navbar that reveals more detail as the viewport grows, and a hamburger overlay under 900px
+
+## Featured projects
+
+| Project | Stack | Live | Source |
+|---|---|---|---|
+| **Cookforia** — culinary studio in Saint Petersburg | Laravel · Blade · MySQL | [cookforia.ru](https://cookforia.ru/) | [github](https://github.com/DoczzzMega/cookforia-new) |
+| **Bumwerk** — BMW & MINI service center | Laravel · PHP · SCSS | [bumwerk.ru](https://bumwerk.ru/) | — |
+| **AI Secretary System** — voice agent w/ XTTS v2 + Whisper + vLLM | Python · Vue 3 · vLLM · XTTS v2 | [shaerware.digital](https://shaerware.digital/) | [github](https://github.com/DoczzzMega/AI_Secretary_System) |
+| **Suno Cleaner** — local AI watermark remover | Laravel · Next.js · Demucs · Encodec | — | [github](https://github.com/DoczzzMega/suno-cleaner) |
+| **React Pizza v2** — Redux Toolkit storefront | React · Redux Toolkit · TS | [demo](https://react-pizza-v2-livid.vercel.app) | [github](https://github.com/DoczzzMega/react-pizza-v2) |
+| **Claude Progressline** — Claude Code statusline | PowerShell · Claude Code | — | [github](https://github.com/DoczzzMega/claude-progressline) |
 
 ## Getting started
 
@@ -78,6 +92,18 @@ All content (skills, projects, contact links, nav items) is centralised in `src/
 | `$bp-8k`      | 7680 | 8K                        |
 
 `html { font-size }` scales 16 → 32px from 1440p to 8K and `@mixin container` raises max-width up to 4600px so the layout breathes on huge displays.
+
+The desktop navbar reveals detail progressively: compact links 900–1099 → `ping →` CTA appears at 1100 → wider gaps at 1200 → glyph numbers (`00`, `01`...) reappear at 1440 → most generous spacing at 1920+.
+
+## Deployment
+
+Currently deployed manually via the Vercel CLI. To redeploy:
+
+```bash
+vercel --prod
+```
+
+To enable automatic deploys on every push to `main`, install the [Vercel GitHub App](https://github.com/apps/vercel/installations/new) for this repo, then run `vercel git connect` once.
 
 ## Contacts
 
