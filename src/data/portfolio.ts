@@ -133,6 +133,39 @@ export const projects: Project[] = [
     source: "https://github.com/DoczzzMega/react-pizza-v2",
   },
   {
+    id: "vue-sneakers",
+    title: "Vue Sneakers",
+    category: "Frontend",
+    description:
+      "Vue 3 sneaker storefront — Composition API, reactive cart drawer, favourites, order history, debounced search, persisted state. Built on Vite with Tailwind utility styling.",
+    stack: ["Vue 3", "Vite", "Tailwind", "Pinia"],
+    accent: "magenta",
+    live: "https://vue-sneakers-jet.vercel.app",
+    source: "https://github.com/DoczzzMega/vue_sneakers",
+  },
+  {
+    id: "hotel-booking",
+    title: "Hotel Booking",
+    category: "Frontend",
+    description:
+      "Hand-coded SCSS / BEM hotel landing — typographic hero, responsive grid, animated booking widget. Pure HTML / CSS / JS — a study in CSS architecture.",
+    stack: ["SCSS", "BEM", "HTML", "JS"],
+    accent: "yellow",
+    live: "https://hotel-booking-delta.vercel.app",
+    source: "https://github.com/DoczzzMega/Hotel-Booking",
+  },
+  {
+    id: "video-player",
+    title: "Custom Video Player",
+    category: "Frontend",
+    description:
+      "Custom HTML5 video controls — play / pause, volume, scrub, fullscreen, keyboard shortcuts. Vanilla JS, no libraries. Themable via CSS variables.",
+    stack: ["HTML5", "JS", "CSS"],
+    accent: "green",
+    live: "https://custom-video-player-sandy-xi.vercel.app",
+    source: "https://github.com/DoczzzMega/custom_video-player",
+  },
+  {
     id: "claude-progressline",
     title: "Claude Progressline",
     category: "Tool",
