@@ -217,11 +217,52 @@
   }
 }
 
+.cardLinks {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 1px dashed $color-border;
+}
+
+.cardLink {
+  @include mono;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: clamp(0.7rem, 0.95vw, 0.78rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text-dim;
+  transition: color 0.25s ease, transform 0.25s ease;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-teal-bright;
+    transform: translateY(-1px);
+
+    .linkArrow {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .magentaCard &:hover { color: $color-accent-magenta; }
+  .yellowCard &:hover  { color: $color-accent-yellow; }
+  .greenCard &:hover   { color: $color-accent-green; }
+}
+
+.linkArrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  font-size: 1.05em;
+  line-height: 1;
+}
+
 .stack {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-top: auto;
 }
 
 .chip {

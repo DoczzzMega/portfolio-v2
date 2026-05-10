@@ -70,66 +70,77 @@ export const skillGroups: SkillGroup[] = [
 export type Project = {
   id: string;
   title: string;
-  category: "Frontend" | "Backend" | "AI";
+  category: "Client" | "AI" | "Frontend" | "Tool";
   description: string;
   stack: string[];
   accent: "teal" | "magenta" | "yellow" | "green";
+  live?: string;
+  source?: string;
 };
 
 export const projects: Project[] = [
   {
-    id: "motion-ui",
-    title: "Motion-Driven UIs",
-    category: "Frontend",
+    id: "cookforia",
+    title: "Cookforia",
+    category: "Client",
     description:
-      "Cinematic landing pages with scroll-driven storytelling, GSAP timelines and canvas-based hero scenes.",
-    stack: ["Next.js", "GSAP", "ScrollTrigger", "SCSS"],
-    accent: "teal",
-  },
-  {
-    id: "vue-apps",
-    title: "Vue 3 Apps",
-    category: "Frontend",
-    description:
-      "Reactive dashboards and product UIs built on Composition API with Pinia state and Vite tooling.",
-    stack: ["Vue 3", "Pinia", "Vite", "TypeScript"],
-    accent: "teal",
-  },
-  {
-    id: "laravel-api",
-    title: "Laravel APIs",
-    category: "Backend",
-    description:
-      "Type-safe REST APIs with Sanctum/JWT auth, Eloquent relations, queues, and webhook integrations.",
-    stack: ["Laravel 11", "Eloquent", "Sanctum", "PostgreSQL"],
+      "Culinary studio in Saint Petersburg — master-classes, corporate events, weddings, catering. Three studios, full booking flow, gift certificates, multi-cuisine catalog with chef bios.",
+    stack: ["Laravel", "Blade", "MySQL", "JS"],
     accent: "magenta",
+    live: "https://cookforia.ru/",
+    source: "https://github.com/DoczzzMega/cookforia-new",
   },
   {
-    id: "admin-panels",
-    title: "Admin Panels",
-    category: "Backend",
+    id: "bumwerk",
+    title: "Bumwerk",
+    category: "Client",
     description:
-      "Internal tools and CRMs powered by MoonShine and Livewire — DataTables, role-based access, audit logs.",
-    stack: ["MoonShine", "Livewire", "MySQL", "PHP"],
-    accent: "magenta",
+      "Specialised BMW & MINI service center — diagnostics, engine repair, chip tuning for 2018+ models. In-house parts catalog, daily-hour appointment booking, certified-master profiles.",
+    stack: ["Laravel", "PHP", "SCSS", "JS"],
+    accent: "teal",
+    live: "https://bumwerk.ru/",
   },
   {
-    id: "ai-services",
-    title: "AI-Driven Services",
+    id: "suno-cleaner",
+    title: "Suno Cleaner",
     category: "AI",
     description:
-      "Voice + LLM pipelines: Whisper transcription, vLLM inference, XTTS v2 synthesis. Self-hosted on VPS.",
-    stack: ["vLLM", "Whisper", "XTTS v2", "Docker"],
-    accent: "yellow",
-  },
-  {
-    id: "self-hosted",
-    title: "Self-Hosted Infra",
-    category: "AI",
-    description:
-      "Dockerised stacks behind nginx with hardened auth, rate limits, and observability for hobby & client work.",
-    stack: ["Docker", "nginx", "Linux", "VPS"],
+      "Local AI watermark remover for Suno / Sonauto tracks. Laravel API + Next.js dashboard wired to a Demucs / Encodec / mmm DSP pipeline. Self-hosted, batch processing, queued jobs.",
+    stack: ["Laravel", "Next.js", "Demucs", "Encodec"],
     accent: "green",
+    source: "https://github.com/DoczzzMega/suno-cleaner",
+  },
+  {
+    id: "ai-secretary",
+    title: "AI Secretary System",
+    category: "AI",
+    description:
+      "Local AI secretary, tech support & sales manager. XTTS v2 voice cloning, real-time recognition (Vosk / Whisper), offline LLM (vLLM + Qwen / Llama). Vue 3 admin panel, Telegram bot, site widget, fine-tuning pipeline.",
+    stack: ["Python", "Vue 3", "vLLM", "XTTS v2", "Whisper"],
+    accent: "yellow",
+    live: "https://shaerware.digital/",
+    source: "https://github.com/DoczzzMega/AI_Secretary_System",
+  },
+  {
+    id: "react-pizza",
+    title: "React Pizza v2",
+    category: "Frontend",
+    description:
+      "Pizza delivery storefront — Redux Toolkit + RTK Query, debounced search, category filters, sort, pagination, persistent cart with skeleton-loaders during fetch.",
+    stack: ["React", "Redux Toolkit", "TypeScript", "SCSS"],
+    accent: "teal",
+    live: "https://react-pizza-v2-livid.vercel.app",
+    source: "https://github.com/DoczzzMega/react-pizza-v2",
+  },
+  {
+    id: "claude-progressline",
+    title: "Claude Progressline",
+    category: "Tool",
+    description:
+      "Open-source statusline for Claude Code CLI — model badge, context window usage, rate limits, project folder. Cross-platform PowerShell core.",
+    stack: ["PowerShell", "Claude Code", "CLI"],
+    accent: "magenta",
+    source: "https://github.com/DoczzzMega/claude-progressline",
   },
 ];
 

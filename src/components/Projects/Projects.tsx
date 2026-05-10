@@ -53,6 +53,34 @@ export default function Projects() {
                 </div>
                 <h3 className={styles.cardTitle}>{project.title}</h3>
                 <p className={styles.cardDescription}>{project.description}</p>
+                {(project.live || project.source) && (
+                  <div className={styles.cardLinks}>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.cardLink}
+                        data-cursor="hover"
+                      >
+                        <span>live</span>
+                        <span className={styles.linkArrow}>↗</span>
+                      </a>
+                    )}
+                    {project.source && (
+                      <a
+                        href={project.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.cardLink}
+                        data-cursor="hover"
+                      >
+                        <span>source</span>
+                        <span className={styles.linkArrow}>↗</span>
+                      </a>
+                    )}
+                  </div>
+                )}
                 <div className={styles.stack}>
                   {project.stack.map((tech) => (
                     <span key={tech} className={styles.chip}>
