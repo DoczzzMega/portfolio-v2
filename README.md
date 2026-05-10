@@ -31,9 +31,12 @@ A rewrite of [v1](https://portfolio-v1-topaz-nu.vercel.app/) with a Matrix-inspi
 |---|---|---|---|
 | **Cookforia** — culinary studio in Saint Petersburg | Laravel · Blade · MySQL | [cookforia.ru](https://cookforia.ru/) | [github](https://github.com/DoczzzMega/cookforia-new) |
 | **Bumwerk** — BMW & MINI service center | Laravel · PHP · SCSS | [bumwerk.ru](https://bumwerk.ru/) | — |
-| **AI Secretary System** — voice agent w/ XTTS v2 + Whisper + vLLM | Python · Vue 3 · vLLM · XTTS v2 | [shaerware.digital](https://shaerware.digital/) | [github](https://github.com/DoczzzMega/AI_Secretary_System) |
 | **Suno Cleaner** — local AI watermark remover | Laravel · Next.js · Demucs · Encodec | — | [github](https://github.com/DoczzzMega/suno-cleaner) |
+| **AI Secretary System** — voice agent w/ XTTS v2 + Whisper + vLLM | Python · Vue 3 · vLLM · XTTS v2 | [shaerware.digital](https://shaerware.digital/) | [github](https://github.com/DoczzzMega/AI_Secretary_System) |
 | **React Pizza v2** — Redux Toolkit storefront | React · Redux Toolkit · TS | [demo](https://react-pizza-v2-livid.vercel.app) | [github](https://github.com/DoczzzMega/react-pizza-v2) |
+| **Vue Sneakers** — Vue 3 Composition API storefront | Vue 3 · Vite · Tailwind · Pinia | [demo](https://vue-sneakers-jet.vercel.app) | [github](https://github.com/DoczzzMega/vue_sneakers) |
+| **Hotel Booking** — hand-coded SCSS / BEM landing study | SCSS · BEM · HTML · JS | [demo](https://hotel-booking-delta.vercel.app) | [github](https://github.com/DoczzzMega/Hotel-Booking) |
+| **Custom Video Player** — vanilla JS HTML5 controls | HTML5 · JS · CSS | [demo](https://custom-video-player-sandy-xi.vercel.app) | [github](https://github.com/DoczzzMega/custom_video-player) |
 | **Claude Progressline** — Claude Code statusline | PowerShell · Claude Code | — | [github](https://github.com/DoczzzMega/claude-progressline) |
 
 ## Getting started

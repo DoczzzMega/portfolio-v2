@@ -56,12 +56,26 @@ type Project = {
   description: string;
   stack: string[];
   accent: "teal" | "magenta" | "yellow" | "green";
-  live?: string;     // optional live URL → renders "live ↗" button
-  source?: string;   // optional GitHub URL → renders "source ↗" button
+  live?: string;     // OPTIONAL — only set when there is a real published demo
+  source?: string;   // OPTIONAL — public GitHub URL
 };
 ```
 
-Cards layout uses index-driven `featured` slots — currently indexes `0` and `3` get `grid-column: span 4` (large bento tiles). Reorder the `projects` array to change which entries are featured. Current real projects (in order): `cookforia` · `bumwerk` · `suno-cleaner` · `ai-secretary` (featured) · `react-pizza` · `claude-progressline`. The first featured slot is `cookforia` (index 0).
+**Link rule (strict):** `live` is set ONLY when a real demo is reachable. For repos without `homepageUrl` (verified via `gh repo list DoczzzMega --json name,homepageUrl`), do NOT invent a URL — set just `source`. Client projects (Cookforia, Bumwerk) may have `live` but no public `source`. Cards skip the link row entirely when both fields are absent.
+
+Cards layout uses index-driven `featured` slots — indexes `0` and `3` get `grid-column: span 4` (large bento tiles). Reorder the `projects` array to change which entries are featured. Current 9 real projects in order:
+
+| idx | id                  | feat | live | source |
+|----:|---------------------|:----:|:----:|:------:|
+|   0 | `cookforia`         |  ⭐  |  ✓   |   ✓    |
+|   1 | `bumwerk`           |      |  ✓   |        |
+|   2 | `suno-cleaner`      |      |      |   ✓    |
+|   3 | `ai-secretary`      |  ⭐  |  ✓   |   ✓    |
+|   4 | `react-pizza`       |      |  ✓   |   ✓    |
+|   5 | `vue-sneakers`      |      |  ✓   |   ✓    |
+|   6 | `hotel-booking`     |      |  ✓   |   ✓    |
+|   7 | `video-player`      |      |  ✓   |   ✓    |
+|   8 | `claude-progressline`|      |      |   ✓    |
 
 ## Design system
 
@@ -136,11 +150,14 @@ Skills + bio + contacts pulled from v1 (https://portfolio-v1-topaz-nu.vercel.app
 
 Projects sourced from real work:
 - **Cookforia** (https://cookforia.ru/) — culinary studio in Saint Petersburg (Laravel client work)
-- **Bumwerk** (https://bumwerk.ru/) — BMW & MINI service center (Laravel client work)
+- **Bumwerk** (https://bumwerk.ru/) — BMW & MINI service center (Laravel client work, no public source)
+- **Suno Cleaner** (https://github.com/DoczzzMega/suno-cleaner) — local AI watermark remover (source-only)
 - **AI Secretary System** (https://shaerware.digital/) — XTTS v2 + Whisper + vLLM voice agent
-- **Suno Cleaner** (https://github.com/DoczzzMega/suno-cleaner) — local AI watermark remover
-- **React Pizza v2** (https://react-pizza-v2-livid.vercel.app) — Redux Toolkit storefront demo
-- **Claude Progressline** (https://github.com/DoczzzMega/claude-progressline) — Claude Code statusline tool
+- **React Pizza v2** (https://react-pizza-v2-livid.vercel.app) — Redux Toolkit storefront
+- **Vue Sneakers** (https://vue-sneakers-jet.vercel.app) — Vue 3 Composition API storefront
+- **Hotel Booking** (https://hotel-booking-delta.vercel.app) — SCSS/BEM landing study
+- **Custom Video Player** (https://custom-video-player-sandy-xi.vercel.app) — vanilla JS HTML5 controls
+- **Claude Progressline** (https://github.com/DoczzzMega/claude-progressline) — Claude Code statusline (source-only)
 
 ## Deployment
 
