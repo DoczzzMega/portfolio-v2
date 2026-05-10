@@ -62,8 +62,8 @@ export default function Navbar() {
       >
         <a className={styles.brand} href="#home" data-cursor="hover" onClick={closeMenu}>
           <span className={styles.dot} />
-          <span>{profile.alias}</span>
-          ::v2
+          <span className={styles.alias}>{profile.alias}</span>
+          <span className={styles.brandSuffix}>::v2</span>
         </a>
 
         <ul className={styles.list}>
