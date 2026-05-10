@@ -1,0 +1,259 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding-block: 6rem 4rem;
+
+  @media (max-width: $bp-md) {
+    padding-block: 5.5rem 3rem;
+  }
+  @media (max-width: $bp-xs) {
+    padding-block: 5rem 2.4rem;
+  }
+}
+
+.container {
+  @include container;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+
+  @media (max-width: $bp-sm) {
+    gap: 2rem;
+  }
+}
+
+.kicker {
+  @include mono;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-teal;
+  margin-bottom: clamp(0.9rem, 2vw, 1.4rem);
+
+  &::before {
+    content: "";
+    width: clamp(20px, 3vw, 32px);
+    height: 1px;
+    background: $color-teal;
+    box-shadow: $glow-teal-sm;
+  }
+}
+
+.heading {
+  @include display;
+  font-size: clamp(2.4rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  font-weight: 700;
+  margin: 0;
+  color: $color-text;
+
+  @media (max-width: $bp-xs) {
+    font-size: clamp(2rem, 12vw, 2.6rem);
+    line-height: 1;
+  }
+
+  @media (min-width: $bp-2xl) {
+    font-size: clamp(7rem, 8vw, 10.5rem);
+  }
+  @media (min-width: $bp-4xl) {
+    font-size: clamp(9rem, 7vw, 14rem);
+  }
+}
+
+.line {
+  display: block;
+  position: relative;
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+  color: $color-teal-bright;
+  text-shadow:
+    0 0 10px rgba(0, 255, 229, 0.55),
+    0 0 32px rgba(0, 224, 208, 0.35);
+
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &::before {
+    color: $color-accent-magenta;
+    transform: translate(-2px, 0);
+    mix-blend-mode: screen;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    animation: glitch-1 4s infinite steps(1, end);
+  }
+
+  &::after {
+    color: $color-accent-yellow;
+    transform: translate(2px, 0);
+    mix-blend-mode: screen;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    animation: glitch-2 4.5s infinite steps(1, end);
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 92%, 100% { transform: translate(0, 0); opacity: 0; }
+  93% { transform: translate(-3px, -1px); opacity: 0.85; }
+  95% { transform: translate(2px, 1px); opacity: 0.7; }
+  97% { transform: translate(-1px, 0); opacity: 0.85; }
+}
+
+@keyframes glitch-2 {
+  0%, 90%, 100% { transform: translate(0, 0); opacity: 0; }
+  91% { transform: translate(3px, 1px); opacity: 0.75; }
+  93% { transform: translate(-2px, -1px); opacity: 0.7; }
+  96% { transform: translate(1px, 0); opacity: 0.85; }
+}
+
+.muted {
+  color: $color-text-dim;
+}
+
+.accent {
+  color: $color-teal;
+  text-shadow: $glow-teal-md;
+}
+
+.tagline {
+  @include mono;
+  font-size: clamp(0.92rem, 1.6vw, 1.18rem);
+  color: $color-text-dim;
+  margin-top: clamp(1rem, 2vw, 1.6rem);
+  max-width: min(560px, 100%);
+  line-height: 1.6;
+
+  @media (min-width: $bp-2xl) {
+    max-width: 720px;
+    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.05em;
+  margin-left: 0.2em;
+  background: $color-teal;
+  vertical-align: -2px;
+  animation: flicker 1.05s steps(1) infinite;
+  box-shadow: $glow-teal-sm;
+}
+
+.actions {
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+
+  @media (min-width: $bp-md) {
+    gap: 1rem;
+  }
+}
+
+.cta {
+  @include mono;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: clamp(0.8rem, 1.5vw, 0.95rem) clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(0.74rem, 1vw, 0.82rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid $color-border-strong;
+  border-radius: $radius-sm;
+  color: $color-teal;
+  background: rgba(0, 224, 208, 0.05);
+  cursor: none;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+
+  @media (max-width: $bp-tablet-lg) {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background: rgba(0, 224, 208, 0.16);
+    box-shadow: $glow-teal-md;
+    transform: translateY(-2px);
+  }
+
+  &::after {
+    content: "→";
+    transition: transform 0.25s ease;
+  }
+
+  &:hover::after { transform: translateX(4px); }
+
+  &.ghost {
+    color: $color-text;
+    border-color: rgba(255, 46, 136, 0.4);
+    background: rgba(255, 46, 136, 0.04);
+
+    &:hover {
+      background: rgba(255, 46, 136, 0.12);
+      box-shadow: $glow-magenta;
+    }
+  }
+
+  @media (max-width: $bp-xs) {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+
+.badges {
+  position: absolute;
+  inset: auto 0 6vh 0;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.badge {
+  @include mono;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: clamp(0.62rem, 0.9vw, 0.78rem);
+  letter-spacing: 0.15em;
+  color: $color-text-dim;
+  text-transform: uppercase;
+
+  span {
+    color: $color-teal;
+  }
+}
+
+@media (max-width: $bp-tablet-lg) {
+  .badges { display: none; }
+}
+
+@media (min-width: $bp-2xl) {
+  .badges { inset: auto 0 8vh 0; }
+}

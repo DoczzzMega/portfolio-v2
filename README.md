@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio v2
 
-## Getting Started
+Personal portfolio for **Roman (DoczzzMega)** — a fullstack developer working across PHP/Laravel and the modern JS ecosystem.
 
-First, run the development server:
+A rewrite of [v1](https://portfolio-v1-topaz-nu.vercel.app/) with a Matrix-inspired 3D aesthetic in a sea-wave teal palette: digital rain canvas, Tron-style perspective grid, glitch typography, glass cards with neon glow, and a custom cursor.
+
+## Stack
+
+- **Next.js 16** (App Router · Turbopack) + React 19
+- **TypeScript** strict
+- **SCSS modules** — no Tailwind
+- **Framer Motion** — entrance reveals + mobile-menu transitions
+- **next/font/google** — Space Grotesk (display) + JetBrains Mono (mono)
+
+## Highlights
+
+- **MatrixRain** — canvas digital rain (katakana + binary) with viewport-aware font size (13–36px from phone to 8K)
+- **PerspectiveGrid** — pure-CSS Tron 3D floor with glowing horizon and radial sun
+- **Custom cursor** — lerp-followed ring + dot, expands on `[data-cursor="hover"]`
+- **Hero glitch** — RGB-split via `::before` magenta + `::after` yellow with clip-path
+- **Conic-gradient border** on Contact card animated via `@property --angle`
+- **Scanline + noise + vignette** CRT overlay on top
+- **Fully responsive 320px → 8K** with a complete breakpoint ladder, root-font-size scaling on ≥2560px, and a hamburger menu under 900px
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run start    # serve prod build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    layout.tsx        # font loaders, metadata
+    page.tsx          # composes all sections
+    globals.scss      # resets, html font-size scaling, scrollbar
+  components/
+    MatrixRain/       # canvas digital rain
+    PerspectiveGrid/  # 3D Tron floor
+    Cursor/           # custom cursor follower
+    Scanlines/        # CRT overlay
+    Navbar/           # pill nav + hamburger
+    Hero/             # glitch hero
+    About/            # bio + stats
+    Skills/           # 3D-tilt skill cards
+    Projects/         # bento project grid
+    Contact/          # contact card with animated border
+    Reveal/           # framer-motion scroll reveal helper
+  data/
+    portfolio.ts      # single source of truth for all copy
+  styles/
+    _variables.scss   # tokens, breakpoints, glow shadows
+    _mixins.scss      # @container, @glass, @section-spacing, @mono, @display
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All content (skills, projects, contact links, nav items) is centralised in `src/data/portfolio.ts` — change copy there, not in components.
 
-## Learn More
+## Responsive ladder
 
-To learn more about Next.js, take a look at the following resources:
+| Token         | px   | use                       |
+|---------------|------|---------------------------|
+| `$bp-xs`      | 360  | very small phones         |
+| `$bp-sm`      | 480  | small phones              |
+| `$bp-md`      | 640  | large phones              |
+| `$bp-tablet`  | 768  | iPad portrait             |
+| `$bp-tablet-lg`| 900 | iPad landscape · burger   |
+| `$bp-lg`      | 1200 | laptop                    |
+| `$bp-xl`      | 1440 | desktop                   |
+| `$bp-2xl`     | 1920 | 1080p                     |
+| `$bp-3xl`     | 2560 | 1440p / wide              |
+| `$bp-4xl`     | 3840 | 4K                        |
+| `$bp-5xl`     | 5120 | 5K                        |
+| `$bp-8k`      | 7680 | 8K                        |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`html { font-size }` scales 16 → 32px from 1440p to 8K and `@mixin container` raises max-width up to 4600px so the layout breathes on huge displays.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contacts
 
-## Deploy on Vercel
+- Email — [doczzzmega@gmail.com](mailto:doczzzmega@gmail.com)
+- Telegram — [@rommega](https://t.me/rommega)
+- GitHub — [DoczzzMega](https://github.com/DoczzzMega)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Personal project — code is shared for reference; copy and assets are mine.

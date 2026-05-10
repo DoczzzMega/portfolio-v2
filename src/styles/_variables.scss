@@ -1,0 +1,51 @@
+// Color tokens — Sea wave / Matrix palette
+$color-bg-deep: #000814;
+$color-bg: #00111a;
+$color-bg-elevated: #001a26;
+$color-bg-glass: rgba(0, 26, 38, 0.55);
+
+$color-teal: #00e0d0;          // primary sea wave
+$color-teal-bright: #00ffe5;   // accent / glow
+$color-teal-deep: #008b8b;
+$color-teal-soft: #4dd9d0;
+
+$color-accent-magenta: #ff2e88;
+$color-accent-yellow: #f5ff00;
+$color-accent-green: #39ff14;
+
+$color-text: #e0fffa;
+$color-text-dim: #7bb3ab;
+$color-text-muted: #4a8077;
+
+$color-border: rgba(0, 224, 208, 0.22);
+$color-border-strong: rgba(0, 224, 208, 0.55);
+
+// Glow shadows
+$glow-teal-sm: 0 0 8px rgba(0, 224, 208, 0.55);
+$glow-teal-md: 0 0 16px rgba(0, 224, 208, 0.45), 0 0 32px rgba(0, 224, 208, 0.2);
+$glow-teal-lg: 0 0 24px rgba(0, 224, 208, 0.6), 0 0 64px rgba(0, 224, 208, 0.25);
+$glow-magenta: 0 0 16px rgba(255, 46, 136, 0.55);
+
+// Layout
+$max-width: 1240px;
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+
+// Easings
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+// Breakpoints — full ladder from 320px tiny phones to 8K screens
+$bp-xs: 360px;        // very small phones (320-359 = below xs)
+$bp-sm: 480px;        // small phones
+$bp-md: 640px;        // large phones / phablets
+$bp-tablet: 768px;    // tablet portrait
+$bp-tablet-lg: 900px; // tablet landscape / small laptop
+$bp-lg: 1200px;       // laptop
+$bp-xl: 1440px;       // desktop
+$bp-2xl: 1920px;      // large desktop / 1080p
+$bp-3xl: 2560px;      // 1440p / wide
+$bp-4xl: 3840px;      // 4K
+$bp-5xl: 5120px;      // 5K
+$bp-8k: 7680px;       // 8K
