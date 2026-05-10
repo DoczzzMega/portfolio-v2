@@ -100,7 +100,12 @@ Every type/padding uses `clamp(min, vw, max)` with min lowered for tiny phones a
 ## Conventions
 
 - **Custom cursor**: `body { cursor: none }` — every interactive element must include `data-cursor="hover"` so the cursor ring expands. Cursor auto-hides on `(pointer: coarse)` or ≤900px.
-- **Progressive nav reveal**: navbar uses `width: max-content` capped to viewport, then progressively reveals detail as the screen grows. Burger overlay <900 → compact links 900-1099 → CTA appears at 1100 → wider gaps at 1200 → glyph numbers (`00`, `01`...) reappear at 1440 → most generous at 1920+. Brand suffix `::v2` hides under 768px. When adding/removing nav items, re-check the 900-1100 range — that's the tightest tier without burger.
+- **Progressive nav reveal**: navbar uses `width: max-content` capped to viewport. Two main desktop tiers:
+  - **900–1439** (laptop): brand + 5 ultra-compact links (no glyphs, no CTA). The `ping →` button is hidden in this range — the brand suffix `::v2` hides under 768px.
+  - **1440+** (desktop): full layout — glyph numbers (`00`, `01`...) reappear, CTA reappears, comfortable padding/letter-spacing.
+  - **1920+**: largest, most generous spacing.
+
+  When adding/removing nav items, the 900-1439 base styles must keep total width tight enough that 5 links + brand fit on a 13" laptop (~1280px effective viewport). Don't trust theoretical sums — verify on a real laptop screenshot.
 - **Scroll reveal**: wrap content in `<Reveal delay={...}>` (`src/components/Reveal/`). It uses framer-motion `whileInView` + `once: true`.
 - **3D card tilt**: see `Skills.tsx` — mousemove computes rotateX/Y from cursor offset, reset on mouseleave.
 - **External link buttons**: `Projects.tsx` renders `live ↗` / `source ↗` buttons under the description, separated by a dashed top border. Hover color matches the card's accent (`tealCard`/`magentaCard`/`yellowCard`/`greenCard`). Always pass `target="_blank" rel="noopener noreferrer" data-cursor="hover"` for outbound links.

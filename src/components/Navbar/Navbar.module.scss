@@ -10,11 +10,11 @@
   width: max-content;
   max-width: calc(100% - 1.6rem);
   border-radius: 999px;
-  padding: 0.45rem 0.45rem 0.45rem 0.75rem;
+  padding: 0.4rem 0.4rem 0.4rem 0.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.4rem;
+  gap: 0.3rem;
   @include glass;
   backdrop-filter: blur(18px) saturate(160%);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
@@ -24,22 +24,16 @@
     border-color: $color-border-strong;
   }
 
-  // ≥1200: laptop — slightly more comfy
-  @media (min-width: $bp-lg) {
-    padding: 0.55rem 0.55rem 0.55rem 0.95rem;
-    gap: 0.5rem;
-  }
-
-  // ≥1440: desktop — comfortable spacing
+  // ≥1440: desktop — comfortable
   @media (min-width: $bp-xl) {
-    padding: 0.6rem 0.6rem 0.6rem 1.05rem;
-    gap: 0.6rem;
+    padding: 0.55rem 0.55rem 0.55rem 1rem;
+    gap: 0.55rem;
   }
 
   // ≥1920: large desktop
   @media (min-width: $bp-2xl) {
-    padding: 0.75rem 0.8rem 0.75rem 1.25rem;
-    gap: 0.85rem;
+    padding: 0.7rem 0.75rem 0.7rem 1.2rem;
+    gap: 0.8rem;
   }
 }
 
@@ -47,26 +41,26 @@
   @include mono;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: clamp(0.72rem, 0.95vw, 0.78rem);
-  letter-spacing: 0.16em;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: $color-text;
-  padding: 0.35rem 0.7rem 0.35rem 0.5rem;
+  padding: 0.3rem 0.5rem 0.3rem 0.4rem;
   border-radius: 999px;
   white-space: nowrap;
 
   @media (max-width: $bp-xs) {
     padding: 0.3rem 0.5rem;
-    gap: 0.4rem;
     font-size: 0.7rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
   }
 
   @media (min-width: $bp-xl) {
     font-size: 0.82rem;
     letter-spacing: 0.18em;
-    padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+    padding: 0.4rem 0.85rem 0.4rem 0.65rem;
+    gap: 0.55rem;
   }
 }
 
@@ -103,7 +97,7 @@
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 0.1rem;
+  gap: 0;
 
   @media (min-width: $bp-xl) {
     gap: 0.2rem;
@@ -114,10 +108,10 @@
   @include mono;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.74rem;
-  letter-spacing: 0.1em;
+  gap: 0.35rem;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: $color-text-dim;
   border-radius: 999px;
@@ -145,14 +139,7 @@
     small { color: rgba(0, 0, 0, 0.55); }
   }
 
-  // ≥1200: a bit more breathing room
-  @media (min-width: $bp-lg) {
-    padding: 0.55rem 0.9rem;
-    font-size: 0.76rem;
-    letter-spacing: 0.12em;
-  }
-
-  // ≥1440: glyph numbers reappear, full padding
+  // ≥1440: comfortable — glyphs reappear
   @media (min-width: $bp-xl) {
     padding: 0.6rem 1rem;
     font-size: 0.78rem;
@@ -169,29 +156,26 @@
 
 .cta {
   @include mono;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.5rem 0.85rem;
+  padding: 0.55rem 0.95rem;
   border-radius: 999px;
   border: 1px solid $color-border-strong;
   color: $color-teal;
   background: rgba(0, 224, 208, 0.05);
   transition: background 0.25s ease, transform 0.25s ease;
   white-space: nowrap;
-  display: none; // hidden 900-1099 to fit nav links
+  display: none; // hidden 900-1439 — link → ping is via contact section
 
   &:hover {
     background: rgba(0, 224, 208, 0.15);
     transform: translateY(-1px);
   }
 
-  // ≥1100: CTA reappears
-  @media (min-width: 1100px) {
-    display: inline-flex;
-  }
-
+  // ≥1440: appears with full nav
   @media (min-width: $bp-xl) {
+    display: inline-flex;
     font-size: 0.76rem;
     letter-spacing: 0.16em;
     padding: 0.6rem 1rem;
