@@ -1,10 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Reveal from "../Reveal/Reveal";
-import { projects, type Project } from "@/data/portfolio";
+import { projectMetas, type ProjectMeta } from "@/data/portfolio";
 import styles from "./Projects.module.scss";
 
-const accentClass: Record<Project["accent"], string> = {
+const accentClass: Record<ProjectMeta["accent"], string> = {
   teal: styles.tealCard,
   magenta: styles.magentaCard,
   yellow: styles.yellowCard,
@@ -12,29 +13,29 @@ const accentClass: Record<Project["accent"], string> = {
 };
 
 export default function Projects() {
+  const t = useTranslations("Projects");
+
   return (
     <section id="projects" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.head}>
           <div>
             <Reveal>
-              <span className={styles.eyebrow}>[03] · projects</span>
+              <span className={styles.eyebrow}>{t("eyebrow")}</span>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className={styles.title}>
-                Selected <span className={styles.titleAccent}>work</span>.
+                {t("titleLead")} <span className={styles.titleAccent}>{t("titleAccent")}</span>{t("titleTrail")}
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
-            <p className={styles.note}>
-              // motion-driven UIs · Laravel APIs · self-hosted AI services
-            </p>
+            <p className={styles.note}>{t("note")}</p>
           </Reveal>
         </div>
 
         <div className={styles.grid}>
-          {projects.map((project, idx) => {
+          {projectMetas.map((project, idx) => {
             const featured = idx === 0 || idx === 3;
             return (
               <Reveal
@@ -46,13 +47,20 @@ export default function Projects() {
                 }`}
               >
                 <div className={styles.cardHead}>
-                  <span className={styles.cardTag}>{project.category}</span>
+                  <span className={styles.cardTag}>
+                    {t(`categories.${project.category}`)}
+                  </span>
                   <span className={styles.cardIndex}>
-                    {String(idx + 1).padStart(2, "0")}/{String(projects.length).padStart(2, "0")}
+                    {String(idx + 1).padStart(2, "0")}/
+                    {String(projectMetas.length).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className={styles.cardTitle}>{project.title}</h3>
-                <p className={styles.cardDescription}>{project.description}</p>
+                <h3 className={styles.cardTitle}>
+                  {t(`items.${project.id}.title`)}
+                </h3>
+                <p className={styles.cardDescription}>
+                  {t(`items.${project.id}.description`)}
+                </p>
                 {(project.live || project.source) && (
                   <div className={styles.cardLinks}>
                     {project.live && (
@@ -63,7 +71,7 @@ export default function Projects() {
                         className={styles.cardLink}
                         data-cursor="hover"
                       >
-                        <span>live</span>
+                        <span>{t("live")}</span>
                         <span className={styles.linkArrow}>↗</span>
                       </a>
                     )}
@@ -75,7 +83,7 @@ export default function Projects() {
                         className={styles.cardLink}
                         data-cursor="hover"
                       >
-                        <span>source</span>
+                        <span>{t("source")}</span>
                         <span className={styles.linkArrow}>↗</span>
                       </a>
                     )}

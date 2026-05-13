@@ -1,11 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import PerspectiveGrid from "../PerspectiveGrid/PerspectiveGrid";
 import { profile } from "@/data/portfolio";
 import styles from "./Hero.module.scss";
 
 export default function Hero() {
+  const t = useTranslations("Hero");
+  const rolePrefix = t("rolePrefix");
+
   return (
     <section id="home" className={styles.section}>
       <PerspectiveGrid />
@@ -17,7 +21,7 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className={styles.kicker}
         >
-          [00] · loading_identity.exe
+          {t("kicker")}
         </motion.div>
 
         <h1 className={styles.heading}>
@@ -27,9 +31,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className={styles.muted}>I&apos;m </span>
-            <span className={styles.glitch} data-text={profile.name}>
-              {profile.name}
+            <span className={styles.muted}>{t("intro")} </span>
+            <span className={styles.glitch} data-text={t("name")}>
+              {t("name")}
             </span>
             <span className={styles.cursor} aria-hidden="true" />
           </motion.span>
@@ -40,7 +44,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
           >
-            a <span className={styles.accent}>fullstack</span>
+            {rolePrefix && <span className={styles.muted}>{rolePrefix} </span>}
+            <span className={styles.accent}>{t("roleAccent")}</span>
           </motion.span>
 
           <motion.span
@@ -49,7 +54,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            developer.
+            {t("roleSuffix")}
           </motion.span>
         </h1>
 
@@ -59,7 +64,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          {profile.tagline}
+          {t("tagline")}
         </motion.p>
 
         <motion.div
@@ -69,14 +74,14 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <a className={styles.cta} href="#projects" data-cursor="hover">
-            view work
+            {t("viewWork")}
           </a>
           <a
             className={`${styles.cta} ${styles.ghost}`}
             href={`mailto:${profile.contacts.email}`}
             data-cursor="hover"
           >
-            establish contact
+            {t("establishContact")}
           </a>
         </motion.div>
       </div>

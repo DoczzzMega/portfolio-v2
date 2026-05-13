@@ -1,18 +1,21 @@
 "use client";
 
 import { useRef, type MouseEvent } from "react";
+import { useTranslations } from "next-intl";
 import Reveal from "../Reveal/Reveal";
-import { skillGroups, type SkillGroup } from "@/data/portfolio";
+import { skillGroupKeys, skillGroupMeta, type SkillGroupKey } from "@/data/portfolio";
 import styles from "./Skills.module.scss";
 
-const accentClass: Record<SkillGroup["accent"], string> = {
+const accentClass: Record<"teal" | "magenta" | "yellow", string> = {
   teal: styles.tealCard,
   magenta: styles.magentaCard,
   yellow: styles.yellowCard,
 };
 
-function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
+function SkillCard({ groupKey, index }: { groupKey: SkillGroupKey; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations(`Skills.groups.${groupKey}`);
+  const meta = skillGroupMeta[groupKey];
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
@@ -32,20 +35,20 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
     <Reveal delay={index * 0.08} y={28}>
       <div
         ref={ref}
-        className={`${styles.card} ${accentClass[group.accent]}`}
+        className={`${styles.card} ${accentClass[meta.accent]}`}
         onMouseMove={handleMove}
         onMouseLeave={handleLeave}
         data-cursor="hover"
       >
         <header className={styles.cardHead}>
-          <span className={styles.glyph}>{group.glyph}</span>
-          <h3 className={styles.cardTitle}>{group.title}</h3>
+          <span className={styles.glyph}>{meta.glyph}</span>
+          <h3 className={styles.cardTitle}>{t("title")}</h3>
         </header>
         <ul className={styles.list}>
-          {group.items.map((item) => (
-            <li key={item.name} className={styles.item}>
-              <span className={styles.itemName}>{item.name}</span>
-              <span className={styles.itemDetail}>{item.detail}</span>
+          {meta.itemKeys.map((itemKey) => (
+            <li key={itemKey} className={styles.item}>
+              <span className={styles.itemName}>{t(`items.${itemKey}.name`)}</span>
+              <span className={styles.itemDetail}>{t(`items.${itemKey}.detail`)}</span>
             </li>
           ))}
         </ul>
@@ -55,28 +58,28 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
 }
 
 export default function Skills() {
+  const t = useTranslations("Skills");
+
   return (
     <section id="skills" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.head}>
           <Reveal>
-            <span className={styles.eyebrow}>[02] · stack</span>
+            <span className={styles.eyebrow}>{t("eyebrow")}</span>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className={styles.title}>
-              The <span className={styles.titleAccent}>tools</span> I run.
+              {t("titleLead")} <span className={styles.titleAccent}>{t("titleAccent")}</span> {t("titleTrail")}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className={styles.subtitle}>
-              // chosen for shipping fast and keeping production calm
-            </p>
+            <p className={styles.subtitle}>{t("subtitle")}</p>
           </Reveal>
         </div>
 
         <div className={styles.grid}>
-          {skillGroups.map((group, idx) => (
-            <SkillCard key={group.id} group={group} index={idx} />
+          {skillGroupKeys.map((groupKey, idx) => (
+            <SkillCard key={groupKey} groupKey={groupKey} index={idx} />
           ))}
         </div>
       </div>

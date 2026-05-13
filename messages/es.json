@@ -1,0 +1,140 @@
+{
+  "Nav": {
+    "home": "inicio",
+    "about": "sobre mí",
+    "skills": "stack",
+    "projects": "proyectos",
+    "contact": "contacto",
+    "ping": "escribir →",
+    "menuOpen": "abrir menú",
+    "menuClose": "cerrar menú",
+    "switchLanguage": "cambiar idioma"
+  },
+  "Hero": {
+    "kicker": "[00] · loading_identity.exe",
+    "intro": "Soy",
+    "name": "Roman",
+    "rolePrefix": "",
+    "roleAccent": "fullstack",
+    "roleSuffix": "desarrollador.",
+    "tagline": "Interfaces que se sienten vivas. Sistemas que permanecen tranquilos.",
+    "viewWork": "ver trabajos",
+    "establishContact": "contactar"
+  },
+  "About": {
+    "eyebrow": "[01] · sobre mí",
+    "titleLead": "Construyo entre",
+    "titleAccent": "Laravel",
+    "titleTrail": "y el navegador.",
+    "body": "Trabajo con PHP/Laravel y JavaScript moderno (React, Vue), combinando frontends expresivos y llenos de movimiento con backends resistentes. Mi foco actual: productos Laravel con IA, landings cinematográficas, pipelines de voz/LLM y APIs con tipos estrictos.",
+    "stats": {
+      "years": "años escribiendo código",
+      "repos": "repositorios públicos",
+      "aiFocus": "integración de IA",
+      "between": "entre Laravel y navegador"
+    }
+  },
+  "Skills": {
+    "eyebrow": "[02] · stack",
+    "titleLead": "Mis",
+    "titleAccent": "herramientas",
+    "titleTrail": ".",
+    "subtitle": "// elegidas para entregar rápido y mantener producción en calma",
+    "groups": {
+      "frontend": {
+        "title": "Frontend",
+        "items": {
+          "react": { "name": "React & Next.js", "detail": "App Router · hooks · SSR" },
+          "vue": { "name": "Vue 3", "detail": "Composition API · Pinia · Vite" },
+          "gsap": { "name": "GSAP & animación", "detail": "ScrollTrigger · timelines · canvas" },
+          "scss": { "name": "SCSS & Tailwind", "detail": "BEM · módulos · design tokens" }
+        }
+      },
+      "backend": {
+        "title": "Backend",
+        "items": {
+          "laravel": { "name": "PHP & Laravel", "detail": "v10/11 · Eloquent · APIs" },
+          "livewire": { "name": "Livewire & MoonShine", "detail": "paneles · DataTables" },
+          "db": { "name": "MySQL / PostgreSQL", "detail": "migraciones · índices · tuning" },
+          "auth": { "name": "REST & Auth", "detail": "Sanctum · JWT · webhooks" }
+        }
+      },
+      "aiTools": {
+        "title": "IA & herramientas",
+        "items": {
+          "ai": { "name": "Integración de IA", "detail": "vLLM · Whisper · XTTS v2 · Vosk" },
+          "docker": { "name": "Docker & Linux", "detail": "self-hosted · VPS · nginx" },
+          "git": { "name": "Git & code reviews", "detail": "conventional commits" },
+          "security": { "name": "Seguridad web", "detail": "auth · hardening · rate limits" }
+        }
+      }
+    }
+  },
+  "Projects": {
+    "eyebrow": "[03] · proyectos",
+    "titleLead": "Trabajos",
+    "titleAccent": "seleccionados",
+    "titleTrail": ".",
+    "note": "// UIs con movimiento · APIs Laravel · IA auto-hospedada",
+    "live": "ver",
+    "source": "código",
+    "categories": {
+      "Client": "Cliente",
+      "AI": "IA",
+      "Frontend": "Frontend",
+      "Tool": "Herramienta"
+    },
+    "items": {
+      "cookforia": {
+        "title": "Cookforia",
+        "description": "Estudio culinario en San Petersburgo — masterclasses, eventos corporativos, bodas, catering. Tres estudios, flujo de reserva completo, certificados de regalo, catálogo multi-cocina con bios de chefs."
+      },
+      "bumwerk": {
+        "title": "Bumwerk",
+        "description": "Taller especializado en BMW & MINI — diagnóstico, reparación de motores, chip-tuning para modelos 2018+. Catálogo propio de piezas, reserva por hora, perfiles de mecánicos certificados."
+      },
+      "suno-cleaner": {
+        "title": "Suno Cleaner",
+        "description": "Eliminador local de marcas de agua de IA en pistas Suno / Sonauto. API Laravel + dashboard Next.js conectados a un pipeline DSP Demucs / Encodec / mmm. Auto-hospedado, procesamiento por lotes, colas de trabajo."
+      },
+      "ai-secretary": {
+        "title": "AI Secretary System",
+        "description": "Secretaria IA local, soporte técnico y gestor de ventas. Clonación de voz XTTS v2, reconocimiento en tiempo real (Vosk / Whisper), LLM offline (vLLM + Qwen / Llama). Panel admin Vue 3, bot de Telegram, widget para sitios, pipeline de fine-tuning."
+      },
+      "react-pizza": {
+        "title": "React Pizza v2",
+        "description": "Tienda de delivery de pizza — Redux Toolkit + RTK Query, búsqueda con debounce, filtros por categoría, orden, paginación, carrito persistente con skeleton-loaders."
+      },
+      "vue-sneakers": {
+        "title": "Vue Sneakers",
+        "description": "Tienda de zapatillas en Vue 3 — Composition API, cart drawer reactivo, favoritos, historial de pedidos, búsqueda con debounce, estado persistente. Sobre Vite con utilidades Tailwind."
+      },
+      "hotel-booking": {
+        "title": "Hotel Booking",
+        "description": "Landing de hotel hecha a mano en SCSS / BEM — hero tipográfico, grid responsivo, widget de reserva animado. HTML / CSS / JS puro — estudio de arquitectura CSS."
+      },
+      "video-player": {
+        "title": "Custom Video Player",
+        "description": "Controles personalizados de video HTML5 — play / pause, volumen, scrub, pantalla completa, atajos. JS puro, sin librerías. Personalizable mediante variables CSS."
+      },
+      "claude-progressline": {
+        "title": "Claude Progressline",
+        "description": "Statusline open-source para Claude Code CLI — badge de modelo, uso de contexto, rate limits, carpeta del proyecto. Core PowerShell multiplataforma."
+      }
+    }
+  },
+  "Contact": {
+    "eyebrow": "[04] · contacto",
+    "titleLead": "Construyamos algo",
+    "titleAccent": "que perdure",
+    "titleTrail": ".",
+    "body": "Abierto a trabajo fullstack, integraciones de IA y landings de alto detalle. Escribe — suelo responder en menos de un día.",
+    "links": {
+      "email": "email",
+      "telegram": "telegram",
+      "github": "github"
+    },
+    "status": "estado: en línea · aceptando transmisiones",
+    "copyright": "© {year} {alias}"
+  }
+}

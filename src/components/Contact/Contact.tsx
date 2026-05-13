@@ -1,24 +1,26 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Reveal from "../Reveal/Reveal";
 import { profile } from "@/data/portfolio";
 import styles from "./Contact.module.scss";
 
 export default function Contact() {
+  const t = useTranslations("Contact");
   const { contacts } = profile;
   const links = [
     {
-      label: "email",
+      key: "email" as const,
       value: contacts.email,
       href: `mailto:${contacts.email}`,
     },
     {
-      label: "telegram",
+      key: "telegram" as const,
       value: contacts.telegramHandle,
       href: contacts.telegram,
     },
     {
-      label: "github",
+      key: "github" as const,
       value: contacts.githubHandle,
       href: contacts.github,
     },
@@ -29,28 +31,25 @@ export default function Contact() {
       <div className={styles.container}>
         <Reveal>
           <div className={styles.shell}>
-            <span className={styles.eyebrow}>[04] · contact</span>
+            <span className={styles.eyebrow}>{t("eyebrow")}</span>
             <h2 className={styles.title}>
-              Let&apos;s build something
+              {t("titleLead")}
               <br />
-              <span className={styles.titleAccent}>that lasts</span>.
+              <span className={styles.titleAccent}>{t("titleAccent")}</span>{t("titleTrail")}
             </h2>
-            <p className={styles.body}>
-              Open to fullstack work, AI integrations, and high-craft
-              landing pages. Drop a line — I usually reply within a day.
-            </p>
+            <p className={styles.body}>{t("body")}</p>
 
             <div className={styles.actions}>
               {links.map((link) => (
                 <a
-                  key={link.label}
+                  key={link.key}
                   className={styles.linkCard}
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   data-cursor="hover"
                 >
-                  <span className={styles.linkLabel}>// {link.label}</span>
+                  <span className={styles.linkLabel}>// {t(`links.${link.key}`)}</span>
                   <span className={styles.linkValue}>{link.value}</span>
                 </a>
               ))}
@@ -59,9 +58,11 @@ export default function Contact() {
             <div className={styles.footer}>
               <span>
                 <span className={styles.dot} />
-                status: online · accepting transmissions
+                {t("status")}
               </span>
-              <span>© {new Date().getFullYear()} {profile.alias}</span>
+              <span>
+                {t("copyright", { year: new Date().getFullYear(), alias: profile.alias })}
+              </span>
             </div>
           </div>
         </Reveal>

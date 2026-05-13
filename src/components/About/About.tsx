@@ -1,11 +1,14 @@
 "use client";
 
 import type { MouseEvent } from "react";
+import { useTranslations } from "next-intl";
 import Reveal from "../Reveal/Reveal";
-import { profile } from "@/data/portfolio";
+import { statKeys, statValues } from "@/data/portfolio";
 import styles from "./About.module.scss";
 
 export default function About() {
+  const t = useTranslations("About");
+
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     e.currentTarget.style.setProperty("--x", `${e.clientX - rect.left}px`);
@@ -17,29 +20,30 @@ export default function About() {
       <div className={styles.container}>
         <div>
           <Reveal>
-            <span className={styles.eyebrow}>[01] · about</span>
+            <span className={styles.eyebrow}>{t("eyebrow")}</span>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className={styles.title}>
-              I build between <span className={styles.accent}>Laravel</span>
-              <br />and the browser.
+              {t("titleLead")} <span className={styles.accent}>{t("titleAccent")}</span>
+              <br />
+              {t("titleTrail")}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className={styles.body}>{profile.description}</p>
+            <p className={styles.body}>{t("body")}</p>
           </Reveal>
         </div>
 
         <div className={styles.statsGrid}>
-          {profile.stats.map((stat, idx) => (
-            <Reveal key={stat.label} delay={0.05 * idx} y={24}>
+          {statKeys.map((key, idx) => (
+            <Reveal key={key} delay={0.05 * idx} y={24}>
               <div
                 className={styles.statCard}
                 onMouseMove={handleMove}
                 data-cursor="hover"
               >
-                <div className={styles.statValue}>{stat.value}</div>
-                <div className={styles.statLabel}>{stat.label}</div>
+                <div className={styles.statValue}>{statValues[key]}</div>
+                <div className={styles.statLabel}>{t(`stats.${key}`)}</div>
               </div>
             </Reveal>
           ))}

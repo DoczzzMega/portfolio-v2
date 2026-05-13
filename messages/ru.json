@@ -1,0 +1,140 @@
+{
+  "Nav": {
+    "home": "главная",
+    "about": "обо мне",
+    "skills": "стек",
+    "projects": "проекты",
+    "contact": "контакты",
+    "ping": "написать →",
+    "menuOpen": "открыть меню",
+    "menuClose": "закрыть меню",
+    "switchLanguage": "сменить язык"
+  },
+  "Hero": {
+    "kicker": "[00] · loading_identity.exe",
+    "intro": "Я",
+    "name": "Roman",
+    "rolePrefix": "",
+    "roleAccent": "fullstack",
+    "roleSuffix": "разработчик.",
+    "tagline": "Интерфейсы, которые ощущаются живыми. Системы, которые работают тихо.",
+    "viewWork": "посмотреть работы",
+    "establishContact": "связаться"
+  },
+  "About": {
+    "eyebrow": "[01] · обо мне",
+    "titleLead": "Я работаю между",
+    "titleAccent": "Laravel",
+    "titleTrail": "и браузером.",
+    "body": "Работаю с PHP/Laravel и современным JavaScript (React, Vue) — сочетаю выразительные фронтенды с движением и устойчивые бэкенды. В последнее время фокус — AI-интегрированные Laravel-продукты, кинематографичные лендинги, голосовые / LLM пайплайны и типобезопасные API.",
+    "stats": {
+      "years": "лет пишу код",
+      "repos": "публичных репозиториев",
+      "aiFocus": "интеграция AI",
+      "between": "между Laravel и браузером"
+    }
+  },
+  "Skills": {
+    "eyebrow": "[02] · стек",
+    "titleLead": "Мои",
+    "titleAccent": "инструменты",
+    "titleTrail": ".",
+    "subtitle": "// выбраны чтобы быстро шипить и держать прод спокойным",
+    "groups": {
+      "frontend": {
+        "title": "Frontend",
+        "items": {
+          "react": { "name": "React & Next.js", "detail": "App Router · хуки · SSR" },
+          "vue": { "name": "Vue 3", "detail": "Composition API · Pinia · Vite" },
+          "gsap": { "name": "GSAP & анимация", "detail": "ScrollTrigger · таймлайны · canvas" },
+          "scss": { "name": "SCSS & Tailwind", "detail": "BEM · модули · дизайн-токены" }
+        }
+      },
+      "backend": {
+        "title": "Backend",
+        "items": {
+          "laravel": { "name": "PHP & Laravel", "detail": "v10/11 · Eloquent · API" },
+          "livewire": { "name": "Livewire & MoonShine", "detail": "админ-панели · DataTables" },
+          "db": { "name": "MySQL / PostgreSQL", "detail": "миграции · индексы · тюнинг" },
+          "auth": { "name": "REST & авторизация", "detail": "Sanctum · JWT · webhooks" }
+        }
+      },
+      "aiTools": {
+        "title": "AI & инструменты",
+        "items": {
+          "ai": { "name": "AI-интеграция", "detail": "vLLM · Whisper · XTTS v2 · Vosk" },
+          "docker": { "name": "Docker & Linux", "detail": "self-hosted · VPS · nginx" },
+          "git": { "name": "Git & code review", "detail": "conventional commits" },
+          "security": { "name": "Web-безопасность", "detail": "auth · hardening · rate limits" }
+        }
+      }
+    }
+  },
+  "Projects": {
+    "eyebrow": "[03] · проекты",
+    "titleLead": "Избранные",
+    "titleAccent": "работы",
+    "titleTrail": ".",
+    "note": "// motion-driven UI · Laravel API · self-hosted AI",
+    "live": "посмотреть",
+    "source": "исходники",
+    "categories": {
+      "Client": "Клиент",
+      "AI": "AI",
+      "Frontend": "Frontend",
+      "Tool": "Инструмент"
+    },
+    "items": {
+      "cookforia": {
+        "title": "Cookforia",
+        "description": "Кулинарная студия в Санкт-Петербурге — мастер-классы, корпоративы, свадьбы, кейтеринг. Три студии, полный флоу бронирования, подарочные сертификаты, мульти-кухонный каталог с био шефов."
+      },
+      "bumwerk": {
+        "title": "Bumwerk",
+        "description": "Специализированный сервис BMW & MINI — диагностика, ремонт двигателей, чип-тюнинг для моделей 2018+. Каталог запчастей на складе, почасовая запись, профили мастеров с сертификацией."
+      },
+      "suno-cleaner": {
+        "title": "Suno Cleaner",
+        "description": "Локальное AI-удаление вотермарок с треков Suno / Sonauto. Laravel API + Next.js дашборд, подключённые к DSP-пайплайну Demucs / Encodec / mmm. Self-hosted, batch-обработка, очереди задач."
+      },
+      "ai-secretary": {
+        "title": "AI Secretary System",
+        "description": "Локальный AI-секретарь, техподдержка и менеджер по продажам. Клонирование голоса XTTS v2, распознавание речи в реальном времени (Vosk / Whisper), offline LLM (vLLM + Qwen / Llama). Vue 3 админ-панель, Telegram-бот, виджет для сайта, fine-tuning пайплайн."
+      },
+      "react-pizza": {
+        "title": "React Pizza v2",
+        "description": "Витрина доставки пиццы — Redux Toolkit + RTK Query, дебаунс-поиск, фильтры категорий, сортировка, пагинация, персистентная корзина со скелетон-лоадерами на запросах."
+      },
+      "vue-sneakers": {
+        "title": "Vue Sneakers",
+        "description": "Витрина кроссовок на Vue 3 — Composition API, реактивный drawer корзины, избранное, история заказов, дебаунс-поиск, сохранение состояния. На Vite со стилизацией Tailwind."
+      },
+      "hotel-booking": {
+        "title": "Hotel Booking",
+        "description": "Лендинг отеля вручную на SCSS / BEM — типографичный hero, респонсив-сетка, анимированный виджет бронирования. Чистый HTML / CSS / JS — этюд по архитектуре CSS."
+      },
+      "video-player": {
+        "title": "Custom Video Player",
+        "description": "Кастомные элементы управления HTML5-видео — play / pause, громкость, перемотка, фуллскрин, горячие клавиши. Чистый JS, без библиотек. Темизация через CSS-переменные."
+      },
+      "claude-progressline": {
+        "title": "Claude Progressline",
+        "description": "Open-source statusline для Claude Code CLI — бейдж модели, использование контекста, лимиты, папка проекта. Кроссплатформенно на PowerShell core."
+      }
+    }
+  },
+  "Contact": {
+    "eyebrow": "[04] · контакты",
+    "titleLead": "Соберём что-то,",
+    "titleAccent": "что останется",
+    "titleTrail": ".",
+    "body": "Открыт к fullstack-работе, AI-интеграциям и тщательно сделанным лендингам. Напишите — обычно отвечаю в течение дня.",
+    "links": {
+      "email": "email",
+      "telegram": "telegram",
+      "github": "github"
+    },
+    "status": "статус: онлайн · принимаю передачи",
+    "copyright": "© {year} {alias}"
+  }
+}

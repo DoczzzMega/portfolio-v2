@@ -1,0 +1,140 @@
+{
+  "Nav": {
+    "home": "home",
+    "about": "about",
+    "skills": "skills",
+    "projects": "projects",
+    "contact": "contact",
+    "ping": "ping →",
+    "menuOpen": "open menu",
+    "menuClose": "close menu",
+    "switchLanguage": "switch language"
+  },
+  "Hero": {
+    "kicker": "[00] · loading_identity.exe",
+    "intro": "I'm",
+    "name": "Roman",
+    "rolePrefix": "a",
+    "roleAccent": "fullstack",
+    "roleSuffix": "developer.",
+    "tagline": "Interfaces that feel alive. Systems that stay quiet.",
+    "viewWork": "view work",
+    "establishContact": "establish contact"
+  },
+  "About": {
+    "eyebrow": "[01] · about",
+    "titleLead": "I build between",
+    "titleAccent": "Laravel",
+    "titleTrail": "and the browser.",
+    "body": "I work across PHP/Laravel and modern JavaScript (React, Vue), combining expressive, motion-rich frontends with resilient backends. Recently focused on AI-integrated Laravel products, cinematic landing pages, voice/LLM pipelines, and type-safe APIs.",
+    "stats": {
+      "years": "years shipping code",
+      "repos": "public repositories",
+      "aiFocus": "AI integration",
+      "between": "between Laravel & browser"
+    }
+  },
+  "Skills": {
+    "eyebrow": "[02] · stack",
+    "titleLead": "The",
+    "titleAccent": "tools",
+    "titleTrail": "I run.",
+    "subtitle": "// chosen for shipping fast and keeping production calm",
+    "groups": {
+      "frontend": {
+        "title": "Frontend",
+        "items": {
+          "react": { "name": "React & Next.js", "detail": "App Router · hooks · SSR" },
+          "vue": { "name": "Vue 3", "detail": "Composition API · Pinia · Vite" },
+          "gsap": { "name": "GSAP & Animation", "detail": "ScrollTrigger · timelines · canvas" },
+          "scss": { "name": "SCSS & Tailwind", "detail": "BEM · modules · design tokens" }
+        }
+      },
+      "backend": {
+        "title": "Backend",
+        "items": {
+          "laravel": { "name": "PHP & Laravel", "detail": "v10/11 · Eloquent · APIs" },
+          "livewire": { "name": "Livewire & MoonShine", "detail": "admin panels · DataTables" },
+          "db": { "name": "MySQL / PostgreSQL", "detail": "migrations · indexing · tuning" },
+          "auth": { "name": "REST & Auth", "detail": "Sanctum · JWT · webhooks" }
+        }
+      },
+      "aiTools": {
+        "title": "AI & Tools",
+        "items": {
+          "ai": { "name": "AI Integration", "detail": "vLLM · Whisper · XTTS v2 · Vosk" },
+          "docker": { "name": "Docker & Linux", "detail": "self-hosted · VPS · nginx" },
+          "git": { "name": "Git & code reviews", "detail": "conventional commits" },
+          "security": { "name": "Web Security", "detail": "auth · hardening · rate limits" }
+        }
+      }
+    }
+  },
+  "Projects": {
+    "eyebrow": "[03] · projects",
+    "titleLead": "Selected",
+    "titleAccent": "work",
+    "titleTrail": ".",
+    "note": "// motion-driven UIs · Laravel APIs · self-hosted AI services",
+    "live": "live",
+    "source": "source",
+    "categories": {
+      "Client": "Client",
+      "AI": "AI",
+      "Frontend": "Frontend",
+      "Tool": "Tool"
+    },
+    "items": {
+      "cookforia": {
+        "title": "Cookforia",
+        "description": "Culinary studio in Saint Petersburg — master-classes, corporate events, weddings, catering. Three studios, full booking flow, gift certificates, multi-cuisine catalog with chef bios."
+      },
+      "bumwerk": {
+        "title": "Bumwerk",
+        "description": "Specialised BMW & MINI service center — diagnostics, engine repair, chip tuning for 2018+ models. In-house parts catalog, daily-hour appointment booking, certified-master profiles."
+      },
+      "suno-cleaner": {
+        "title": "Suno Cleaner",
+        "description": "Local AI watermark remover for Suno / Sonauto tracks. Laravel API + Next.js dashboard wired to a Demucs / Encodec / mmm DSP pipeline. Self-hosted, batch processing, queued jobs."
+      },
+      "ai-secretary": {
+        "title": "AI Secretary System",
+        "description": "Local AI secretary, tech support & sales manager. XTTS v2 voice cloning, real-time recognition (Vosk / Whisper), offline LLM (vLLM + Qwen / Llama). Vue 3 admin panel, Telegram bot, site widget, fine-tuning pipeline."
+      },
+      "react-pizza": {
+        "title": "React Pizza v2",
+        "description": "Pizza delivery storefront — Redux Toolkit + RTK Query, debounced search, category filters, sort, pagination, persistent cart with skeleton-loaders during fetch."
+      },
+      "vue-sneakers": {
+        "title": "Vue Sneakers",
+        "description": "Vue 3 sneaker storefront — Composition API, reactive cart drawer, favourites, order history, debounced search, persisted state. Built on Vite with Tailwind utility styling."
+      },
+      "hotel-booking": {
+        "title": "Hotel Booking",
+        "description": "Hand-coded SCSS / BEM hotel landing — typographic hero, responsive grid, animated booking widget. Pure HTML / CSS / JS — a study in CSS architecture."
+      },
+      "video-player": {
+        "title": "Custom Video Player",
+        "description": "Custom HTML5 video controls — play / pause, volume, scrub, fullscreen, keyboard shortcuts. Vanilla JS, no libraries. Themable via CSS variables."
+      },
+      "claude-progressline": {
+        "title": "Claude Progressline",
+        "description": "Open-source statusline for Claude Code CLI — model badge, context window usage, rate limits, project folder. Cross-platform PowerShell core."
+      }
+    }
+  },
+  "Contact": {
+    "eyebrow": "[04] · contact",
+    "titleLead": "Let's build something",
+    "titleAccent": "that lasts",
+    "titleTrail": ".",
+    "body": "Open to fullstack work, AI integrations, and high-craft landing pages. Drop a line — I usually reply within a day.",
+    "links": {
+      "email": "email",
+      "telegram": "telegram",
+      "github": "github"
+    },
+    "status": "status: online · accepting transmissions",
+    "copyright": "© {year} {alias}"
+  }
+}

@@ -2,13 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { navItems, profile } from "@/data/portfolio";
+import { useTranslations } from "next-intl";
+import { navItemKeys, navItemGlyphs, profile } from "@/data/portfolio";
+import { LangSwitcher, LangSwitcherMobile } from "../LangSwitcher/LangSwitcher";
 import styles from "./Navbar.module.scss";
 
 export default function Navbar() {
   const [active, setActive] = useState<string>("home");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const t = useTranslations("Nav");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -18,8 +21,8 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = navItems
-      .map((item) => document.getElementById(item.id))
+    const sections = navItemKeys
+      .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));
     if (!sections.length) return;
 
@@ -67,39 +70,44 @@ export default function Navbar() {
         </a>
 
         <ul className={styles.list}>
-          {navItems.map((item) => (
-            <li key={item.id}>
+          {navItemKeys.map((id) => (
+            <li key={id}>
               <a
-                href={`#${item.id}`}
-                className={`${styles.link} ${active === item.id ? styles.active : ""}`}
+                href={`#${id}`}
+                className={`${styles.link} ${active === id ? styles.active : ""}`}
                 data-cursor="hover"
               >
-                <small>{item.glyph}</small>
-                {item.label}
+                <small>{navItemGlyphs[id]}</small>
+                {t(id)}
               </a>
             </li>
           ))}
         </ul>
 
-        <a
-          className={styles.cta}
-          href={`mailto:${profile.contacts.email}`}
-          data-cursor="hover"
-        >
-          ping →
-        </a>
+        <div className={styles.tail}>
+          <div className={styles.langWrap}>
+            <LangSwitcher />
+          </div>
+          <a
+            className={styles.cta}
+            href={`mailto:${profile.contacts.email}`}
+            data-cursor="hover"
+          >
+            {t("ping")}
+          </a>
 
-        <button
-          type="button"
-          className={`${styles.burger} ${open ? styles.open : ""}`}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((prev) => !prev)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+          <button
+            type="button"
+            className={`${styles.burger} ${open ? styles.open : ""}`}
+            aria-label={open ? t("menuClose") : t("menuOpen")}
+            aria-expanded={open}
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </motion.nav>
 
       <AnimatePresence>
@@ -113,40 +121,43 @@ export default function Navbar() {
             role="dialog"
             aria-modal="true"
           >
-            <ul className={styles.mobileList}>
-              {navItems.map((item, idx) => (
+            <div className={styles.mobileInner}>
+              <ul className={styles.mobileList}>
+                {navItemKeys.map((id, idx) => (
+                  <motion.li
+                    key={id}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <a
+                      href={`#${id}`}
+                      className={`${styles.mobileLink} ${
+                        active === id ? styles.active : ""
+                      }`}
+                      onClick={closeMenu}
+                    >
+                      <small>{navItemGlyphs[id]}</small>
+                      {t(id)}
+                    </a>
+                  </motion.li>
+                ))}
                 <motion.li
-                  key={item.id}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 + idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <a
-                    href={`#${item.id}`}
-                    className={`${styles.mobileLink} ${
-                      active === item.id ? styles.active : ""
-                    }`}
+                    href={`mailto:${profile.contacts.email}`}
+                    className={styles.mobilePing}
                     onClick={closeMenu}
                   >
-                    <small>{item.glyph}</small>
-                    {item.label}
+                    {t("ping")}
                   </a>
                 </motion.li>
-              ))}
-              <motion.li
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <a
-                  href={`mailto:${profile.contacts.email}`}
-                  className={styles.mobilePing}
-                  onClick={closeMenu}
-                >
-                  ping →
-                </a>
-              </motion.li>
-            </ul>
+              </ul>
+              <LangSwitcherMobile onSelect={closeMenu} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

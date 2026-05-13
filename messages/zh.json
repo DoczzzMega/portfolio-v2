@@ -1,0 +1,140 @@
+{
+  "Nav": {
+    "home": "首页",
+    "about": "关于",
+    "skills": "技术栈",
+    "projects": "项目",
+    "contact": "联系",
+    "ping": "联系 →",
+    "menuOpen": "打开菜单",
+    "menuClose": "关闭菜单",
+    "switchLanguage": "切换语言"
+  },
+  "Hero": {
+    "kicker": "[00] · loading_identity.exe",
+    "intro": "我是",
+    "name": "Roman",
+    "rolePrefix": "",
+    "roleAccent": "全栈",
+    "roleSuffix": "开发者。",
+    "tagline": "界面有生命力。系统保持安静。",
+    "viewWork": "查看作品",
+    "establishContact": "建立联系"
+  },
+  "About": {
+    "eyebrow": "[01] · 关于我",
+    "titleLead": "我在",
+    "titleAccent": "Laravel",
+    "titleTrail": "与浏览器之间构建。",
+    "body": "我使用 PHP/Laravel 和现代 JavaScript（React、Vue），将富有表现力、动效丰富的前端与稳健的后端结合起来。近期专注于集成 AI 的 Laravel 产品、电影感落地页、语音 / LLM 管道以及类型安全的 API。",
+    "stats": {
+      "years": "年的代码交付经验",
+      "repos": "个公开仓库",
+      "aiFocus": "AI 集成方向",
+      "between": "穿梭于 Laravel 与浏览器之间"
+    }
+  },
+  "Skills": {
+    "eyebrow": "[02] · 技术栈",
+    "titleLead": "我使用的",
+    "titleAccent": "工具",
+    "titleTrail": "。",
+    "subtitle": "// 为了快速交付并让生产环境保持安静而选用",
+    "groups": {
+      "frontend": {
+        "title": "Frontend",
+        "items": {
+          "react": { "name": "React 与 Next.js", "detail": "App Router · hooks · SSR" },
+          "vue": { "name": "Vue 3", "detail": "Composition API · Pinia · Vite" },
+          "gsap": { "name": "GSAP 与动画", "detail": "ScrollTrigger · 时间线 · canvas" },
+          "scss": { "name": "SCSS 与 Tailwind", "detail": "BEM · 模块 · 设计令牌" }
+        }
+      },
+      "backend": {
+        "title": "Backend",
+        "items": {
+          "laravel": { "name": "PHP 与 Laravel", "detail": "v10/11 · Eloquent · API" },
+          "livewire": { "name": "Livewire 与 MoonShine", "detail": "后台 · DataTables" },
+          "db": { "name": "MySQL / PostgreSQL", "detail": "迁移 · 索引 · 调优" },
+          "auth": { "name": "REST 与认证", "detail": "Sanctum · JWT · webhooks" }
+        }
+      },
+      "aiTools": {
+        "title": "AI 与工具",
+        "items": {
+          "ai": { "name": "AI 集成", "detail": "vLLM · Whisper · XTTS v2 · Vosk" },
+          "docker": { "name": "Docker 与 Linux", "detail": "自托管 · VPS · nginx" },
+          "git": { "name": "Git 与代码评审", "detail": "conventional commits" },
+          "security": { "name": "Web 安全", "detail": "认证 · 加固 · 频率限制" }
+        }
+      }
+    }
+  },
+  "Projects": {
+    "eyebrow": "[03] · 项目",
+    "titleLead": "精选",
+    "titleAccent": "作品",
+    "titleTrail": "。",
+    "note": "// 动效驱动 UI · Laravel API · 自托管 AI",
+    "live": "演示",
+    "source": "源代码",
+    "categories": {
+      "Client": "客户",
+      "AI": "AI",
+      "Frontend": "前端",
+      "Tool": "工具"
+    },
+    "items": {
+      "cookforia": {
+        "title": "Cookforia",
+        "description": "圣彼得堡的烹饪工作室——大师课、企业活动、婚礼、餐饮服务。三家工作室、完整的预订流程、礼品券、含主厨简介的多菜系目录。"
+      },
+      "bumwerk": {
+        "title": "Bumwerk",
+        "description": "BMW 与 MINI 专修服务中心——诊断、发动机维修、2018+ 机型芯片调校。内部零件目录、按小时预约、认证技师档案。"
+      },
+      "suno-cleaner": {
+        "title": "Suno Cleaner",
+        "description": "面向 Suno / Sonauto 音轨的本地 AI 水印移除器。Laravel API + Next.js 仪表盘，连接 Demucs / Encodec / mmm 的 DSP 管道。自托管、批处理、任务队列。"
+      },
+      "ai-secretary": {
+        "title": "AI Secretary System",
+        "description": "本地 AI 秘书、技术支持与销售经理。XTTS v2 声音克隆、实时识别（Vosk / Whisper）、离线 LLM（vLLM + Qwen / Llama）。Vue 3 后台、Telegram 机器人、站点小部件、微调管道。"
+      },
+      "react-pizza": {
+        "title": "React Pizza v2",
+        "description": "披萨外卖商店——Redux Toolkit + RTK Query、去抖搜索、分类筛选、排序、分页、带骨架加载的持久化购物车。"
+      },
+      "vue-sneakers": {
+        "title": "Vue Sneakers",
+        "description": "Vue 3 球鞋商店——Composition API、响应式购物车抽屉、收藏、订单历史、去抖搜索、持久化状态。基于 Vite，使用 Tailwind 实用样式。"
+      },
+      "hotel-booking": {
+        "title": "Hotel Booking",
+        "description": "手写 SCSS / BEM 的酒店落地页——排版型 hero、响应式网格、带动效的预订小部件。纯 HTML / CSS / JS——一次 CSS 架构练习。"
+      },
+      "video-player": {
+        "title": "Custom Video Player",
+        "description": "自定义 HTML5 视频控件——播放 / 暂停、音量、拖动、全屏、快捷键。纯 JS，无依赖。通过 CSS 变量主题化。"
+      },
+      "claude-progressline": {
+        "title": "Claude Progressline",
+        "description": "Claude Code CLI 的开源状态行——模型徽章、上下文使用、速率限制、项目文件夹。跨平台 PowerShell 核心。"
+      }
+    }
+  },
+  "Contact": {
+    "eyebrow": "[04] · 联系",
+    "titleLead": "一起构建一些",
+    "titleAccent": "持久的东西",
+    "titleTrail": "。",
+    "body": "对全栈合作、AI 集成和高品质落地页保持开放。来个消息——通常一天内回复。",
+    "links": {
+      "email": "邮箱",
+      "telegram": "telegram",
+      "github": "github"
+    },
+    "status": "状态：在线 · 接受传输",
+    "copyright": "© {year} {alias}"
+  }
+}
