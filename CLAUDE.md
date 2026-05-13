@@ -14,7 +14,8 @@ Rewrite of v1 (https://portfolio-v1-topaz-nu.vercel.app/) with motion-rich UX.
 - **TypeScript** (strict)
 - **SCSS modules** — no Tailwind, no CSS-in-JS
 - **Framer Motion** — animations
-- Fonts via `next/font/google`: **Space Grotesk** (display) + **JetBrains Mono** (code/UI)
+- **next-intl v4** — i18n with `[locale]` segment, middleware-driven routing
+- Fonts via `next/font/google`: **Manrope** (display) + **JetBrains Mono** (mono). Manrope ships Cyrillic glyphs — required for `ru` default. Don't swap back to Space Grotesk: it has no Cyrillic subset.
 
 ## Commands
 
@@ -28,40 +29,97 @@ npx tsc --noEmit # standalone typecheck
 ## Directory layout
 
 ```
+messages/
+  ru.json en.json de.json es.json fr.json zh.json   # all translatable copy
 src/
   app/
-    layout.tsx        # font loaders, metadata, html shell
-    page.tsx          # composes all sections
-    globals.scss      # resets + scrollbar + html font-size scaling
+    layout.tsx                  # minimal root (returns children)
+    globals.scss                # resets + scrollbar + html font-size scaling
+    [locale]/
+      layout.tsx                # html shell, fonts, NextIntlClientProvider
+      page.tsx                  # composes all sections (awaits params, sets locale)
   components/
     <Name>/<Name>.tsx + <Name>.module.scss   # one folder per component
+    LangSwitcher/               # desktop dropdown + mobile pill grid
   data/
-    portfolio.ts      # SINGLE source of truth for content
+    portfolio.ts                # STRUCTURAL data only (ids, stack, accents, URLs)
+  i18n/
+    routing.ts                  # locales list, defaultLocale, label metadata
+    navigation.ts               # localised Link/redirect/usePathname/useRouter
+    request.ts                  # getRequestConfig — loads messages by locale
+  middleware.ts                 # next-intl locale middleware
   styles/
-    _variables.scss   # color tokens, breakpoints, glow shadows
-    _mixins.scss      # @container, @glass, @section-spacing, @mono, @display
+    _variables.scss             # color tokens, breakpoints, glow shadows
+    _mixins.scss                # @container, @glass, @section-spacing, @mono, @display
 ```
 
-## Content
+## Content & i18n
 
-**All copy, projects, skills, contacts, nav items live in `src/data/portfolio.ts`** — never hard-code in components. Exports: `profile`, `skillGroups`, `projects`, `navItems`.
+**Split between two source-of-truth files:**
+
+1. **`messages/<locale>.json`** — all translatable copy: nav labels, section eyebrows/titles/bodies, project titles + descriptions, skill group titles + item names/details, stat labels, contact body, status text. Each locale file has identical key structure; missing keys at runtime fall back to the default locale. Namespaces match component names: `Nav`, `Hero`, `About`, `Skills`, `Projects`, `Contact`.
+
+2. **`src/data/portfolio.ts`** — structural / non-translatable data only:
+   - `profile` — alias, contact handles, URLs
+   - `statKeys`, `statValues` — stat metric values (numbers + symbols)
+   - `skillGroupKeys`, `skillGroupMeta` — group keys, glyphs, accents, ordered item-keys
+   - `projectMetas` — array of `{ id, category, stack, accent, live?, source? }` (no copy)
+   - `navItemKeys`, `navItemGlyphs` — nav-item ids + their `00`/`01` glyph prefixes
+
+**Components** import `useTranslations("Namespace")` from `next-intl` and look up by key. Stack chip names (React, Laravel, etc.) stay in English across all locales — they're brand names, not translated.
+
+### Supported locales
+
+| Locale | Code | Native name | Notes |
+|--------|------|-------------|-------|
+| `ru`   | RU   | Русский     | **default** — lives at `/` (no prefix) |
+| `en`   | EN   | English     | `/en` |
+| `de`   | DE   | Deutsch     | `/de` |
+| `es`   | ES   | Español     | `/es` |
+| `fr`   | FR   | Français    | `/fr` |
+| `zh`   | ZH   | 中文         | `/zh` |
+
+Routing uses `localePrefix: 'as-needed'` so the default locale (`ru`) has no URL prefix.
+
+### Adding a new locale
+
+1. Add the locale string to `routing.locales` in `src/i18n/routing.ts` and to `localeLabels`.
+2. Copy `messages/en.json` to `messages/<new>.json` and translate the values (keep keys identical).
+3. Add the locale to the middleware matcher pattern in `src/middleware.ts`.
+4. Update the `Manrope` / `JetBrains_Mono` subsets in `src/app/[locale]/layout.tsx` if the new locale needs a non-Latin/Cyrillic script.
+
+### Translation rule
+
+- Translate all prose, headings, CTAs, eyebrows, status text, project descriptions, skill detail strings.
+- **Do not translate**: stack chip names (React, Laravel...), brand titles (Cookforia, Bumwerk...), `loading_identity.exe`, the `[00]` glyph prefixes, the alias `DoczzzMega::v2`, version markers like `v10/11`, technology names (`vLLM`, `XTTS v2`, `App Router`, etc.).
 
 ### Project schema
 
 ```ts
-type Project = {
-  id: string;
-  title: string;
+// src/data/portfolio.ts — structural only
+type ProjectMeta = {
+  id: string;            // matches messages/<locale>.json → Projects.items.<id>
   category: "Client" | "AI" | "Frontend" | "Tool";
-  description: string;
-  stack: string[];
+  stack: string[];       // stack chip labels — universal, not translated
   accent: "teal" | "magenta" | "yellow" | "green";
-  live?: string;     // OPTIONAL — only set when there is a real published demo
-  source?: string;   // OPTIONAL — public GitHub URL
+  live?: string;         // OPTIONAL — only set when there is a real published demo
+  source?: string;       // OPTIONAL — public GitHub URL
 };
+
+// messages/<locale>.json — translatable copy
+"Projects": {
+  "items": {
+    "<id>": { "title": "...", "description": "..." }
+  },
+  "categories": { "Client": "...", "AI": "...", ... }
+}
 ```
 
 **Link rule (strict):** `live` is set ONLY when a real demo is reachable. For repos without `homepageUrl` (verified via `gh repo list DoczzzMega --json name,homepageUrl`), do NOT invent a URL — set just `source`. Client projects (Cookforia, Bumwerk) may have `live` but no public `source`. Cards skip the link row entirely when both fields are absent.
+
+**Adding a project** requires:
+1. Append an entry to `projectMetas` in `src/data/portfolio.ts` with id, category, stack, accent, optional live/source.
+2. Add a matching `items.<id>` block in **every** locale file under `Projects` namespace.
 
 Cards layout uses index-driven `featured` slots — indexes `0` and `3` get `grid-column: span 4` (large bento tiles). Reorder the `projects` array to change which entries are featured. Current 9 real projects in order:
 

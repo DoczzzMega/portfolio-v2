@@ -12,7 +12,8 @@ A rewrite of [v1](https://portfolio-v1-topaz-nu.vercel.app/) with a Matrix-inspi
 - **TypeScript** strict
 - **SCSS modules** — no Tailwind
 - **Framer Motion** — entrance reveals + mobile-menu transitions
-- **next/font/google** — Space Grotesk (display) + JetBrains Mono (mono)
+- **next-intl v4** — i18n with `[locale]` segment, 6 languages
+- **next/font/google** — Manrope (display) + JetBrains Mono (mono), both with Cyrillic subset
 
 ## Highlights
 
@@ -24,6 +25,7 @@ A rewrite of [v1](https://portfolio-v1-topaz-nu.vercel.app/) with a Matrix-inspi
 - **Conic-gradient border** on Contact card animated via `@property --angle`
 - **Scanline + noise + vignette** CRT overlay on top
 - **Fully responsive 320px → 8K** with a complete breakpoint ladder, root-font-size scaling on ≥2560px, a progressive desktop navbar that reveals more detail as the viewport grows, and a hamburger overlay under 900px
+- **6 languages** — Russian (default), English, German, Spanish, French, Chinese. Switcher dropdown on desktop, pill grid in the mobile menu. Default locale lives at `/`, others at `/en`, `/de`, `/es`, `/fr`, `/zh`
 
 ## Featured projects
 
@@ -51,31 +53,37 @@ npm run start    # serve prod build
 ## Project structure
 
 ```
+messages/
+  ru.json en.json de.json es.json fr.json zh.json   # all translatable copy
 src/
   app/
-    layout.tsx        # font loaders, metadata
-    page.tsx          # composes all sections
-    globals.scss      # resets, html font-size scaling, scrollbar
+    layout.tsx              # minimal root
+    globals.scss            # resets, html font-size scaling
+    [locale]/
+      layout.tsx            # html shell, fonts, i18n provider
+      page.tsx              # composes all sections
   components/
-    MatrixRain/       # canvas digital rain
-    PerspectiveGrid/  # 3D Tron floor
-    Cursor/           # custom cursor follower
-    Scanlines/        # CRT overlay
-    Navbar/           # pill nav + hamburger
-    Hero/             # glitch hero
-    About/            # bio + stats
-    Skills/           # 3D-tilt skill cards
-    Projects/         # bento project grid
-    Contact/          # contact card with animated border
-    Reveal/           # framer-motion scroll reveal helper
+    MatrixRain/             # canvas digital rain
+    PerspectiveGrid/        # 3D Tron floor
+    Cursor/                 # custom cursor follower
+    Scanlines/              # CRT overlay
+    Navbar/                 # pill nav + hamburger
+    LangSwitcher/           # locale dropdown + mobile pill grid
+    Hero/About/Skills/Projects/Contact/
+    Reveal/                 # framer-motion scroll reveal helper
   data/
-    portfolio.ts      # single source of truth for all copy
+    portfolio.ts            # structural data (ids, stack, accents, URLs)
+  i18n/
+    routing.ts              # locales + labels
+    navigation.ts           # localised Link/redirect/usePathname/useRouter
+    request.ts              # message loader
+  middleware.ts             # next-intl locale middleware
   styles/
-    _variables.scss   # tokens, breakpoints, glow shadows
-    _mixins.scss      # @container, @glass, @section-spacing, @mono, @display
+    _variables.scss
+    _mixins.scss
 ```
 
-All content (skills, projects, contact links, nav items) is centralised in `src/data/portfolio.ts` — change copy there, not in components.
+Copy lives in `messages/<locale>.json`; structural project data lives in `src/data/portfolio.ts`. To add a project, append to `projectMetas` and add an `items.<id>` entry to **every** locale file.
 
 ## Responsive ladder
 
@@ -97,6 +105,17 @@ All content (skills, projects, contact links, nav items) is centralised in `src/
 `html { font-size }` scales 16 → 32px from 1440p to 8K and `@mixin container` raises max-width up to 4600px so the layout breathes on huge displays.
 
 The desktop navbar reveals detail progressively: compact links 900–1099 → `ping →` CTA appears at 1100 → wider gaps at 1200 → glyph numbers (`00`, `01`...) reappear at 1440 → most generous spacing at 1920+.
+
+## Languages
+
+| Locale | Code | URL prefix | Native name |
+|--------|------|------------|-------------|
+| Russian (default) | `ru` | `/` | Русский |
+| English | `en` | `/en` | English |
+| German | `de` | `/de` | Deutsch |
+| Spanish | `es` | `/es` | Español |
+| French | `fr` | `/fr` | Français |
+| Chinese | `zh` | `/zh` | 中文 |
 
 ## Deployment
 
