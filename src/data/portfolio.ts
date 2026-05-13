@@ -129,7 +129,7 @@ export const projects: Project[] = [
       "Pizza delivery storefront — Redux Toolkit + RTK Query, debounced search, category filters, sort, pagination, persistent cart with skeleton-loaders during fetch.",
     stack: ["React", "Redux Toolkit", "TypeScript", "SCSS"],
     accent: "teal",
-    live: "https://react-pizza-v2-livid.vercel.app",
+    live: "https://react-pizza-v2-items-by-id.vercel.app/",
     source: "https://github.com/DoczzzMega/react-pizza-v2",
   },
   {

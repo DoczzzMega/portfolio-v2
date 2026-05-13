@@ -153,7 +153,7 @@ Projects sourced from real work:
 - **Bumwerk** (https://bumwerk.ru/) — BMW & MINI service center (Laravel client work, no public source)
 - **Suno Cleaner** (https://github.com/DoczzzMega/suno-cleaner) — local AI watermark remover (source-only)
 - **AI Secretary System** (https://shaerware.digital/) — XTTS v2 + Whisper + vLLM voice agent
-- **React Pizza v2** (https://react-pizza-v2-livid.vercel.app) — Redux Toolkit storefront
+- **React Pizza v2** (https://react-pizza-v2-items-by-id.vercel.app/) — Redux Toolkit storefront
 - **Vue Sneakers** (https://vue-sneakers-jet.vercel.app) — Vue 3 Composition API storefront
 - **Hotel Booking** (https://hotel-booking-delta.vercel.app) — SCSS/BEM landing study
 - **Custom Video Player** (https://custom-video-player-sandy-xi.vercel.app) — vanilla JS HTML5 controls
